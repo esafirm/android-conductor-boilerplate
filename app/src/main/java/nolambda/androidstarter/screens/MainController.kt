@@ -5,11 +5,11 @@ import android.widget.TextView
 import butterknife.BindView
 
 import nolambda.androidstarter.R
-import nolambda.androidstarter.commons.Controller
+import nolambda.androidstarter.commons.AbsController
 import nolambda.androidstarter.navigator.AppNavigator
 import javax.inject.Inject
 
-class MainController : Controller() {
+class MainController : AbsController() {
 
     @Inject lateinit var navigator: AppNavigator
 

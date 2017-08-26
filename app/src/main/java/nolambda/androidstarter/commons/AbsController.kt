@@ -1,10 +1,10 @@
 package nolambda.androidstarter.commons
 
-import com.esafirm.conductorextra.butterknife.AbsController
+import com.esafirm.conductorextra.butterknife.BinderController
 import nolambda.androidstarter.di.components.ControllerComponent
 import nolambda.androidstarter.di.modules.ControllerModule
 
-abstract class Controller : AbsController() {
+abstract class AbsController : BinderController() {
 
     protected val component: ControllerComponent by lazy {
         if (activity == null) {
