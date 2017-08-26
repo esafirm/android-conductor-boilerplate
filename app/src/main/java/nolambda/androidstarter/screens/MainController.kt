@@ -1,0 +1,27 @@
+package nolambda.androidstarter.screens
+
+import android.view.View
+import android.widget.TextView
+import butterknife.BindView
+
+import nolambda.androidstarter.R
+import nolambda.androidstarter.commons.Controller
+import nolambda.androidstarter.navigator.AppNavigator
+import javax.inject.Inject
+
+class MainController : Controller() {
+
+    @Inject lateinit var navigator: AppNavigator
+
+    @BindView(R.id.main_txt_hello) lateinit var textView: TextView
+
+    override fun getLayoutResId(): Int = R.layout.controller_main
+
+    override fun onViewBound(bindingResult: View) {
+        component.inject(this)
+
+        textView.setOnClickListener {
+            navigator.goToDetail()
+        }
+    }
+}
