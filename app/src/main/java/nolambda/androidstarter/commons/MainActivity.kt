@@ -9,15 +9,16 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.internal.LifecycleHandler
 import nolambda.androidstarter.MainApp
 import nolambda.androidstarter.di.components.ActivityComponent
+import nolambda.androidstarter.di.helpers.HasComponent
 import nolambda.androidstarter.di.modules.ActivityModule
 import nolambda.androidstarter.di.modules.NavigatorModule
 import nolambda.androidstarter.navigator.AppNavigator
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HasComponent<ActivityComponent> {
 
-    lateinit var router: Router
-    lateinit var overlayRouter: Router
+    private lateinit var router: Router
+    private lateinit var overlayRouter: Router
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +59,12 @@ class MainActivity : AppCompatActivity() {
     /* > Component */
     /* --------------------------------------------------- */
 
-    val activityComponent: ActivityComponent by lazy {
-        application.let { it as MainApp }.appComponent
+    override fun getComponent(): ActivityComponent {
+        return activityComponent
+    }
+
+    private val activityComponent: ActivityComponent by lazy {
+        MainApp.appComponent!!
                 .activityComponent()
                 .activityModule(ActivityModule(this))
                 .navigatorModule(NavigatorModule(AppNavigator(router, overlayRouter)))

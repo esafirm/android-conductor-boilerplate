@@ -3,7 +3,6 @@ package nolambda.androidstarter.screens
 import android.view.View
 import android.widget.TextView
 import butterknife.BindView
-
 import nolambda.androidstarter.R
 import nolambda.androidstarter.commons.AbsController
 import nolambda.androidstarter.navigator.AppNavigator
