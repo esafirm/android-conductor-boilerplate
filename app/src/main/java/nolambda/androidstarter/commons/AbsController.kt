@@ -13,6 +13,9 @@ abstract class AbsController : BinderController() {
         if (activity == null) {
             throw IllegalStateException("Not attached to Activity")
         }
+        if ((activity is HasComponent<*>).not()) {
+            throw IllegalStateException("Activity should implement HasComponent<Component>")
+        }
         activity.let { it as HasComponent<ActivityComponent> }
                 .getComponent()
                 .controllerComponent()
