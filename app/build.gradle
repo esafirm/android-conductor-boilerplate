@@ -48,6 +48,7 @@ android {
     packagingOptions {
         exclude 'META-INF/MANIFEST.MF'
     }
+    buildToolsVersion '26.0.2'
 }
 
 dependencies {
