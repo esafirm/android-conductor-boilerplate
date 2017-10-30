@@ -6,6 +6,7 @@ import nolambda.androidstarter.di.modules.NavigatorModule
 import nolambda.androidstarter.navigator.AppNavigator
 import nolambda.androidstarter.navigator.IntentNavigator
 
+@ActivityScope
 @Subcomponent(modules = arrayOf(
         ActivityModule::class,
         NavigatorModule::class
