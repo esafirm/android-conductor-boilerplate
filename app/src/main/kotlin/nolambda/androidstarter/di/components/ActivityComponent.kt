@@ -3,6 +3,7 @@ package nolambda.androidstarter.di.components
 import dagger.Subcomponent
 import nolambda.androidstarter.di.modules.ActivityModule
 import nolambda.androidstarter.di.modules.NavigatorModule
+import nolambda.androidstarter.di.scopes.ActivityScope
 import nolambda.androidstarter.navigator.AppNavigator
 import nolambda.androidstarter.navigator.IntentNavigator
 
