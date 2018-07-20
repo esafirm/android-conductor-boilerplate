@@ -8,10 +8,7 @@ import nolambda.androidstarter.navigator.AppNavigator
 import nolambda.androidstarter.navigator.IntentNavigator
 
 @ActivityScope
-@Subcomponent(modules = arrayOf(
-        ActivityModule::class,
-        NavigatorModule::class
-))
+@Subcomponent(modules = [ActivityModule::class, NavigatorModule::class])
 interface ActivityComponent {
 
     fun appNavigator(): AppNavigator
