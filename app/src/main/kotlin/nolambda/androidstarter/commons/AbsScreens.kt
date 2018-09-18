@@ -1,7 +1,7 @@
 package nolambda.androidstarter.commons
 
 import com.bluelinelabs.conductor.Controller
-import com.esafirm.conductorextra.addLifecycleCallback
+import com.esafirm.conductorextra.common.onEvent
 import nolambda.androidstarter.di.components.ActivityComponent
 import nolambda.androidstarter.di.components.ControllerComponent
 import nolambda.androidstarter.di.helpers.HasComponent
@@ -17,7 +17,7 @@ abstract class AbsStatefulScreen<S, P : Presenter<S>> : StatefulScreen<S, P>() {
     protected var onInit: InitBlock? = null
 
     init {
-        addLifecycleCallback(onPreContextAvailable = { _, remover ->
+        onEvent(onPreContextAvailable = { remover ->
             onInit?.invoke()
             remover()
         })
@@ -29,7 +29,7 @@ abstract class AbsScreen : Screen() {
     protected var onInit: InitBlock? = null
 
     init {
-        addLifecycleCallback(onPreContextAvailable = { _, remover ->
+        onEvent(onPreContextAvailable = { remover ->
             onInit?.invoke()
             remover()
         })

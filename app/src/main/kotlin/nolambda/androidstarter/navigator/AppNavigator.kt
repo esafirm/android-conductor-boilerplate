@@ -3,8 +3,8 @@ package nolambda.androidstarter.navigator
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
 import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
-import com.esafirm.conductorextra.setRootIfNeeded
-import com.esafirm.conductorextra.transaction.Routes
+import com.esafirm.conductorextra.common.Routes
+import com.esafirm.conductorextra.common.setRootIfNeeded
 import nolambda.androidstarter.screens.ApiExampleStatefulScreen
 import nolambda.androidstarter.screens.DetailScreen
 import nolambda.androidstarter.screens.MainScreen
