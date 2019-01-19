@@ -3,6 +3,7 @@ package nolambda.androidstarter.screens
 import com.esafirm.conductorextra.common.onEvent
 import kotlinx.android.synthetic.main.controller_main.*
 import nolambda.androidstarter.R
+import nolambda.androidstarter.R.id.main_txt_hello
 import nolambda.androidstarter.commons.AbsScreen
 import nolambda.androidstarter.navigator.AppNavigator
 import javax.inject.Inject
