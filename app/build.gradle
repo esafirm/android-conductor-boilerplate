@@ -81,9 +81,6 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    /* Butterknife */
-    kapt 'com.jakewharton:butterknife-compiler:8.6.0'
-
     /* Network */
     final okHttpVersion = '3.8.1'
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
