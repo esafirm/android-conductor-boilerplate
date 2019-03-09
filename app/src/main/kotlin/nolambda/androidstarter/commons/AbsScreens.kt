@@ -5,6 +5,7 @@ import com.bluelinelabs.conductor.Controller
 import com.esafirm.conductorextra.common.onEvent
 import nolambda.androidstarter.di.components.ActivityComponent
 import nolambda.androidstarter.di.components.ControllerComponent
+import nolambda.androidstarter.di.helpers.ComponentReflectionInjector
 import nolambda.androidstarter.di.helpers.HasComponent
 import nolambda.androidstarter.di.modules.ControllerModule
 import nolambda.androidstarter.di.plugins.Plugin
@@ -16,15 +17,25 @@ import nolambda.screen.StatefulScreen
 typealias InitBlock = () -> Unit
 
 abstract class AbsStatefulScreen<S, P : Presenter<S>> : StatefulScreen<S, P> {
-    protected var onInit: InitBlock? = null
-    private val initLazy by lazy { onInit?.invoke() }
+
+    private val injector by lazy {
+        ComponentReflectionInjector(ControllerComponent::class.java, makeComponent(*usePlugins()))
+    }
+
+    private val injectOnce by lazy { injector.inject(this@AbsStatefulScreen) }
 
     constructor() : super()
     constructor(bundle: Bundle?) : super(bundle)
 
+    protected open fun usePlugins(): Array<Plugin> = emptyArray()
+
+    protected open fun useInject(): Boolean = true
+
     init {
         onEvent(onPreContextAvailable = { remover ->
-            initLazy
+            if (useInject()) {
+                injectOnce
+            }
             remover()
         })
     }

@@ -11,7 +11,6 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.controller_detail.*
 import nolambda.androidstarter.R
 import nolambda.androidstarter.commons.AbsStatefulScreen
-import nolambda.androidstarter.commons.makeComponent
 import nolambda.androidstarter.di.plugins.Plugin
 import nolambda.androidstarter.di.plugins.PluginManager
 import nolambda.androidstarter.navigator.AppNavigator
@@ -66,11 +65,7 @@ class DetailScreen : AbsStatefulScreen<DetailState, DetailPresenter> {
     constructor(bundle: Bundle?) : super(bundle)
     constructor() : super(DetailProps("Haiii").toPropsBundle())
 
-    init {
-        onInit = {
-            makeComponent(DetailPlugin(getProps())).inject(this)
-        }
-    }
+    override fun usePlugins(): Array<Plugin> = arrayOf(DetailPlugin(getProps()))
 
     override fun createView() = xml(R.layout.controller_detail)
     override fun createPresenter() = presenter
